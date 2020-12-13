@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <bottom>
+        <TabPane fx:id="queuesPane" prefHeight="572.0" prefWidth="783.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab fx:id="tabRunning" text="Running">
+                    <content>
+                        <BorderPane fx:id="runningPane" prefHeight="540.0" prefWidth="775.0">
+                            <top>
+                                <ToolBar fx:id="barResources" prefHeight="25.0" prefWidth="800.0" BorderPane.alignment="TOP_CENTER">
+                                    <items>
+                                    </items>
+                                </ToolBar>
+                            </top>
+                        </BorderPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="tabRejected" text="Rejects">
+                    <content>
+                        <TableView prefHeight="200.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab fx:id="tabFinished" text="Finished">
+                    <content>
+                        <TableView prefHeight="200.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab fx:id="tabSettings" text="Settings and changes">
+                    <content>
+                        <Pane prefHeight="540.0" prefWidth="800.0">
+                            <children>
+                                <TitledPane animated="false" collapsible="false" text="Initial values">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="133.0" prefWidth="353.0">
+                                            <children>
+                                                <Label layoutX="14.0" layoutY="15.0" prefHeight="17.0" prefWidth="136.0" text="System memory">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField fx:id="txtMemory" layoutX="14.0" layoutY="35.0" text="2048" />
+                                                <Label layoutX="14.0" layoutY="70.0" prefHeight="17.0" prefWidth="136.0" text="Resources count">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField fx:id="txtResources" layoutX="14.0" layoutY="90.0" text="3" />
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane animated="false" collapsible="false" layoutY="158.0" prefHeight="385.0" prefWidth="355.0" text="Runtime settings">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="359.0" prefWidth="354.0">
+                                            <children>
+                                                <Label layoutX="14.0" layoutY="14.0" prefHeight="20.0" prefWidth="137.0" text="Ticks per second:">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Label>
+                                                <Slider fx:id="sldTps" blockIncrement="1.0" layoutX="14.0" layoutY="37.0" max="20.0" min="1.0" value="1.0" />
+                                                <CheckBox fx:id="chkErrors" layoutX="16.0" layoutY="123.0" mnemonicParsing="false" text="Generate errors" />
+                                                <Label layoutX="13.0" layoutY="150.0" prefHeight="17.0" prefWidth="136.0" text="Process errors rarity:">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Label>
+                                                <Slider fx:id="sldErrors" layoutX="13.0" layoutY="174.0" max="1000.0" min="600.0" value="800.0" />
+                                                <CheckBox fx:id="chkGeneration" layoutX="16.0" layoutY="81.0" mnemonicParsing="false" text="Generate random processes" />
+                                                <Label fx:id="lblTps" layoutX="140.0" layoutY="16.0" text="1" />
+                                                <Label fx:id="lblErrors" layoutX="143.0" layoutY="152.0" text="800" />
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </TitledPane>
+                                <Label layoutX="372.0" layoutY="30.0" prefHeight="50.0" prefWidth="112.0" text="System Time (ticks):">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="372.0" layoutY="87.0" text="Tasks finished:">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="371.0" layoutY="125.0" text="Tasks rejected:">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="369.0" layoutY="231.0" text="CPU inactivity (ticks):">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="367.0" layoutY="197.0" text="CPU queue size:">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="381.0" layoutY="159.0" text="Tasks total:">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="lblTicks" layoutX="611.0" layoutY="47.0" text="0" />
+                                <Label fx:id="lblFinished" layoutX="611.0" layoutY="88.0" text="0" />
+                                <Label fx:id="lblRejected" layoutX="611.0" layoutY="126.0" text="0" />
+                                <Label fx:id="lblQueue" layoutX="611.0" layoutY="198.0" text="0" />
+                                <Label fx:id="lblInactivity" layoutX="611.0" layoutY="232.0" text="0" />
+                                <Label fx:id="lblTotal" layoutX="611.0" layoutY="160.0" text="0" />
+                                <Label layoutX="372.0" layoutY="262.0" text="Memory usage:">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="lblMemory" layoutX="611.0" layoutY="263.0" text="0" />
+                            </children>
+                        </Pane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </bottom>
+    <center>
+        <ToolBar prefHeight="40.0" prefWidth="794.0" BorderPane.alignment="CENTER">
+            <items>
+                <Button fx:id="btnCreate" mnemonicParsing="false" prefHeight="24.0" prefWidth="150.0" text="Create" textAlignment="CENTER">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Button>
+                <Button fx:id="btnRun" mnemonicParsing="false" prefHeight="24.0" prefWidth="140.0" text="Run" textAlignment="CENTER" textFill="#15cd05">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Button>
+                <ToggleButton fx:id="btnPause" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" text="Pause" textAlignment="CENTER" textFill="#1ab2e1">
+                    <font>
+                        <Font size="14.0" />
+                    </font></ToggleButton>
+                <Button fx:id="btnNext" mnemonicParsing="false" prefHeight="24.0" prefWidth="140.0" text="Next" textAlignment="CENTER">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Button>
+                <Button fx:id="btnStop" mnemonicParsing="false" prefHeight="24.0" prefWidth="140.0" text="Stop" textAlignment="CENTER" textFill="#f50202">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Button>
+            </items>
+        </ToolBar>
+    </center>
+</BorderPane>
